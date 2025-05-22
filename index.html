@@ -1,51 +1,243 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Himalayan Aroma - Nepali Restaurant Qatar</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: 'Inter', sans-serif; /* A nice default sans-serif font */
-      }
-      /* Custom scrollbar for a more refined look (optional) */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #c1c1c1;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #a1a1a1;
-      }
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.1.0/",
-    "react": "https://esm.sh/react@^19.1.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.1.0/"
-  }
-}
-</script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Himalayan Aroma Qatar - Authentic Nepali Cuisine</title>
+	<link rel="stylesheet" href="style.css"> <!-- Assuming style.css is in the same directory -->
 </head>
-<body class="bg-stone-50 text-stone-800">
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+<body>
+	<header>
+		<a href="#" class="logo">HimalayanAroma<span>.QA</span></a>
+		<div class="menuToggle" onclick="toggleMenu()"></div>
+		<ul class="navigation">
+			<li><a href="#home" onclick="toggleMenu()">Home</a></li>
+			<li><a href="#about" onclick="toggleMenu()">About Us</a></li>
+			<li><a href="#menu" onclick="toggleMenu()">Menu</a></li>
+			<li><a href="#chefs" onclick="toggleMenu()">Our Chefs</a></li>
+			<li><a href="#testimonials" onclick="toggleMenu()">Guest Reviews</a></li>
+			<li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+		</ul>
+	</header>
+
+	<section class="banner" id="home"> <!-- Changed id to home to match nav -->
+		<div class="content">
+			<h2>Taste the Peaks of Nepal in Qatar</h2>
+			<p>
+				Welcome to Himalayan Aroma Qatar, where authentic Nepali flavors meet Qatari hospitality. Embark on a culinary journey with our traditional dishes, prepared with the freshest ingredients and a passion for excellence.
+			</p>
+			<a href="#menu" class="btn">Explore Our Menu</a>
+		</div>
+	</section>
+
+	<section class="about" id="about">
+		<div class="row">
+			<div class="col50">
+				<h2 class="titleText"><span>A</span>bout Himalayan Aroma</h2>
+				<p>
+					Nestled in the heart of Qatar, Himalayan Aroma brings the vibrant and diverse culinary heritage of Nepal to your plate. Our story began with a desire to share the warmth of Nepali homes and the rich tapestry of flavors that define our cuisine.
+					<br><br>
+					We are committed to authenticity, using traditional cooking methods and sourcing the finest spices. Whether you're a long-time lover of Nepali food or new to its delights, we invite you to experience our hospitality.
+				</p>
+			</div>
+
+			<div class="col50">
+				<div class="imgBx">
+					<img src="img/nepali_restaurant_interior_qatar.jpg" alt="Restaurant Interior or Nepali cultural depiction">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="menu" id="menu">
+		<div class="title">
+			<h2 class="titleText">Our Signature <span>M</span>enu</h2>
+			<p>
+			    Discover the authentic taste of Nepal with our carefully crafted dishes.
+		    </p>
+		</div>
+
+		<div class="content">
+			<div class="box">
+				<div class="imgBx">
+					<img src="img/momo_dumplings.jpg" alt="Momos (Nepali Dumplings)">
+				</div>
+				<div class="text">
+					<h3>Momos (Steamed/Fried)</h3>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgBx">
+					<img src="img/dal_bhat_thali.jpg" alt="Dal Bhat Tarkari">
+				</div>
+				<div class="text">
+					<h3>Dal Bhat Power Set</h3>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgBx">
+					<img src="img/newari_khaja.jpg" alt="Newari Khaja Set">
+				</div>
+				<div class="text">
+					<h3>Newari Khaja Set</h3>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgBx">
+					<img src="img/sel_roti.jpg" alt="Sel Roti">
+				</div>
+				<div class="text">
+					<h3>Sel Roti (Sweet Rice Bread)</h3>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgBx">
+					<img src="img/gundruk_soup.jpg" alt="Gundruk ko Jhol">
+				</div>
+				<div class="text">
+					<h3>Gundruk ko Jhol (Fermented Leaf Soup)</h3>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgBx">
+					<img src="img/chicken_sekuwa.jpg" alt="Chicken Sekuwa">
+				</div>
+				<div class="text">
+					<h3>Chicken Sekuwa (Grilled Skewers)</h3>
+				</div>
+			</div>
+		</div>
+		<div class="title">
+			<a href="#menu" class="btn">View Full Menu</a> <!-- You might link this to a more detailed menu page/PDF later -->
+		</div>
+	</section>
+
+	<section class="expert" id="chefs"> <!-- Changed id and content to 'chefs' -->
+		<div class="title">
+			<h2 class="titleText">Our Culinary <span>C</span>hefs</h2>
+			<p>
+				Meet the artisans behind your meal, bringing years of Nepali cooking tradition to Qatar.
+			</p>
+		</div>
+		<div class="content">
+			<div class="box">
+				<div class="imgBx">
+					<img src="img/chef_ramesh.jpg" alt="Chef Ramesh">
+				</div>
+				<div class="text">
+					<h3>Chef Ramesh Bhandari</h3>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgBx">
+					<img src="img/chef_sita.jpg" alt="Chef Sita">
+				</div>
+				<div class="text">
+					<h3>Chef Sita Gurung</h3>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgBx">
+					<img src="img/kitchen_team_nepali.jpg" alt="Nepali Kitchen Team">
+				</div>
+				<div class="text">
+					<h3>Our Passionate Team</h3>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgBx">
+					<img src="img/chef_specializing.jpg" alt="Chef Specializing Dish">
+				</div>
+				<div class="text">
+					<h3>Master of Spices</h3>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="testimonials" id="testimonials">
+		<div class="title white">
+			<h2 class="titleText">What Our <span>G</span>uests Say</h2>
+			<p>
+				Hear from those who have experienced the Himalayan Aroma in Qatar.
+			</p>
+		</div>
+		<div class="content">
+			<div class="box">
+				<div class="imgBx">
+					<img src="img/guest_Aisha_qatar.jpg" alt="Aisha Al-Thani">
+				</div>
+				<div class="text">
+					<p>
+						"Absolutely authentic Nepali food! The momos were incredible, and the ambiance transported me to Kathmandu. A must-visit in Doha."
+					</p>
+					<h3>Aisha A.</h3>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgBx">
+					<img src="img/guest_rajesh_nepal.jpg" alt="Rajesh Sharma">
+				</div>
+				<div class="text">
+					<p>
+						"As a Nepali living in Qatar, Himalayan Aroma is my go-to for a taste of home. The Dal Bhat is just like my mother makes. Highly recommended!"
+					</p>
+					<h3>Rajesh S.</h3>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgBx">
+					<img src="img/guest_mark_expat.jpg" alt="Mark Peterson">
+				</div>
+				<div class="text">
+					<p>
+						"A fantastic discovery! The staff were so friendly, explaining the dishes. The Newari Khaja set was an explosion of flavors. Will be back soon!"
+					</p>
+					<h3>Mark P.</h3>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="contact" id="contact">
+		<div class="title">
+			<h2 class="titleText"><span>G</span>et In Touch</h2>
+			<p>Visit us or send us a message for reservations and inquiries.</p>
+		</div>
+		<form class="contactForm" method="post" action="#">
+			<h3>Send Us a Message</h3>
+			<div class="inputBox">
+				<input type="text" placeholder="Your Name" required>
+			</div>
+			<div class="inputBox">
+				<input type="email" placeholder="Your Email" required>
+			</div>
+			<div class="inputBox">
+				<textarea placeholder="Your Message (e.g., reservation for 2, inquiry about an event)" required></textarea>
+			</div>			
+			<div class="inputBox">
+				<input type="submit" value="Send">
+			</div>
+		</form>
+	</section>
+
+	<div class="copyrightText">
+		<p>Copyright 2024 <a href="#">Himalayan Aroma Qatar</a>. All Rights Reserved.</p>
+	</div>
+
+	<script type="text/javascript">
+		window.addEventListener('scroll', function(){
+			const header = document.querySelector('header');
+			header.classList.toggle("sticky", window.scrollY > 0);
+		});
+
+		function toggleMenu()
+		{
+			const menuToggle = document.querySelector('.menuToggle');
+			const navigation = document.querySelector('.navigation');
+			menuToggle.classList.toggle('active');
+			navigation.classList.toggle('active');
+		}
+	</script>
 </body>
 </html>
-<link rel="stylesheet" href="index.css">
-<script src="index.tsx" type="module"></script>
