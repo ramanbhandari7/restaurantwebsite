@@ -1,6 +1,6 @@
 /* style.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap'); /* For a more elegant heading touch */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
 
 * {
 	margin: 0;
@@ -10,15 +10,14 @@
 	scroll-behavior: smooth;
 }
 
-/* --- Global Variables (Optional, but good for consistency) --- */
 :root {
-    --primary-color: #e04e00; /* A warm, inviting orange-red, typical for food */
-    --secondary-color: #ffc107; /* Gold accent */
+    --primary-color: #e04e00;
+    --secondary-color: #ffc107;
     --text-color: #333;
     --light-text-color: #fff;
     --bg-light: #f9f9f9;
     --bg-dark: #222;
-    --section-padding: 80px 100px; /* top/bottom left/right */
+    --section-padding: 80px 100px;
 }
 
 p {
@@ -27,34 +26,33 @@ p {
 	line-height: 1.6;
 }
 
-/* --- Header Styling --- */
 header {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
-	padding: 20px 100px; /* Reduced padding initially for sticky effect */
+	padding: 20px 100px;
 	z-index: 1000;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	transition: 0.5s;
-	background: rgba(255, 255, 255, 0.1); /* Slight transparent white for banner visibility */
-    backdrop-filter: blur(5px); /* Glassmorphism effect */
+	background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
 }
 
 header.sticky {
 	background: var(--light-text-color);
-	padding: 15px 100px; /* Slightly smaller padding when sticky */
+	padding: 15px 100px;
 	box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
 header .logo {
-	color: var(--text-color);
+	color: var(--text-color); /* Changed to text-color so it's visible on transparent and sticky */
 	font-weight: 700;
 	font-size: 2em;
 	text-decoration: none;
-    font-family: 'Playfair Display', serif; /* Distinct font for logo */
+    font-family: 'Playfair Display', serif;
 }
 header.sticky .logo {
     color: var(--text-color);
@@ -75,23 +73,26 @@ header .navigation li {
 
 header .navigation li a {
 	text-decoration: none;
-	color: var(--text-color); /* Text color for nav links */
+	color: var(--light-text-color); /* Start with light text for video background */
 	font-weight: 500;
 	transition: color 0.3s ease;
 }
 header.sticky .navigation li a {
-    color: var(--text-color);
+    color: var(--text-color); /* Darker text on sticky white header */
 }
 header .navigation li a:hover {
 	color: var(--primary-color);
 }
+header.sticky .navigation li a:hover {
+    color: var(--primary-color);
+}
 
-/* --- General Section Styling --- */
+
 section {
 	padding: var(--section-padding);
 }
 
-/* --- Banner Section --- */
+/* --- Banner Section with Video --- */
 .banner {
 	position: relative;
 	width: 100%;
@@ -99,37 +100,45 @@ section {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: url('img/nepali_mountain_food_banner.jpg') no-repeat center center/cover; /* Replace with a suitable banner image */
-}
-.banner::before { /* Optional overlay for better text readability */
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.4);
+	overflow: hidden; /* To contain the video */
 }
 
-.banner .content {
+.banner-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1; /* Place video behind content */
+}
+
+.banner .content { /* Ensure content is above video and overlay */
 	max-width: 900px;
 	text-align: center;
-    position: relative; /* To be above the overlay */
+    position: relative;
     z-index: 1;
+    /* Add a subtle dark overlay for text readability on video if needed */
+    /* background: rgba(0,0,0,0.3); */
+    /* padding: 20px; */
+    /* border-radius: 10px; */
 }
 
 .banner .content h2 {
-	font-size: 3.5em; /* Larger font for banner title */
+	font-size: 3.5em;
 	color: var(--light-text-color);
 	font-weight: 700;
     font-family: 'Playfair Display', serif;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Text shadow for better readability on video */
 }
 
 .banner .content p {
 	font-size: 1.1em;
 	color: var(--light-text-color);
     margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Text shadow */
 }
 
 .btn {
@@ -153,13 +162,13 @@ section {
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
 }
-.banner .btn:hover { /* Specific hover for banner button if image is dark */
+.banner .btn:hover {
     color: var(--light-text-color);
-    border: 2px solid var(--light-text-color);
+    border: 2px solid var(--light-text-color); /* Keep light color for contrast on video */
+    background: rgba(255,255,255,0.1); /* Slight transparent background on hover */
 }
 
 
-/* --- About Section --- */
 .row {
 	position: relative;
 	width: 100%;
@@ -188,7 +197,7 @@ section {
 .row .col50 .imgBx {
 	position: relative;
 	width: 100%;
-	height: 450px; /* Or min-height and let image define */
+	height: 450px;
 }
 
 .row .col50 .imgBx img {
@@ -202,7 +211,6 @@ section {
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
-/* --- Menu Section --- */
 .menu {
     background: var(--bg-light);
 }
@@ -212,7 +220,7 @@ section {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-    margin-bottom: 40px; /* Space after title block */
+    margin-bottom: 40px;
 }
 
 .menu .content, .expert .content {
@@ -263,29 +271,16 @@ section {
     font-size: 1.2em;
 }
 
-/* --- Expert/Chefs Section --- */
-/* Uses same .box styling as menu */
 .expert .content .box .imgBx {
-    height: 300px; /* Adjust if chef photos are different aspect ratio */
-}
-.expert .content .box .imgBx img {
-    border-radius: 0; /* If you want circular chef images, apply to img */
-    /* For circular images: */
-    /* border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    margin: 20px auto 0;
-    display: block;
-    box-shadow: 0 0 0 5px #fff, 0 0 0 7px var(--primary-color); */
+    height: 300px;
 }
 
-
-/* --- Testimonials Section --- */
 .testimonials {
-	background: url('img/nepali_prayer_flags_bg.jpg') no-repeat center center/cover; /* Replace with a suitable background */
+    /* IMPORTANT: You still need to add this image to your 'images' folder */
+	background: url('images/nepali_prayer_flags_bg.jpg') no-repeat center center/cover;
     position: relative;
 }
-.testimonials::before { /* Dark overlay for text readability */
+.testimonials::before {
     content: '';
     position: absolute;
     top: 0;
@@ -296,7 +291,7 @@ section {
     z-index: 0;
 }
 .testimonials .title, .testimonials .content {
-    position: relative; /* To sit above the ::before pseudo-element */
+    position: relative;
     z-index: 1;
 }
 
@@ -310,7 +305,7 @@ section {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	flex-direction: row; /* Default, but explicit */
+	flex-direction: row;
 	margin-top: 40px;
 }
 
@@ -369,7 +364,6 @@ section {
 	font-weight: 600;
 }
 
-/* --- Contact Section --- */
 .contact {
     background: var(--bg-light);
 }
@@ -377,8 +371,8 @@ section {
 	padding: 50px 40px;
 	background: var(--light-text-color);
 	box-shadow: 0 15px 50px rgba(0,0,0,0.1);
-	max-width: 700px; /* Control form width */
-	margin: 20px auto 0 auto; /* Center form */
+	max-width: 700px;
+	margin: 20px auto 0 auto;
     border-radius: 10px;
 }
 
@@ -423,15 +417,14 @@ section {
 	transition: 0.5s;
 	max-width: 150px;
 	font-weight: 500;
-	border: none; /* Reset default button border */
+	border: none;
 	cursor: pointer;
 }
 .contactForm .inputBox input[type="submit"]:hover {
     letter-spacing: 3px;
-    background: #d34500; /* Darker shade of primary */
+    background: #d34500;
 }
 
-/* --- Copyright --- */
 .copyrightText {
 	padding: 15px 40px;
 	border-top: 1px solid rgba(0,0,0,0.1);
@@ -453,27 +446,22 @@ section {
     color: var(--primary-color);
 }
 
-/* --- Responsive Design --- */
-
-/* Hamburger Menu Icon (Mobile) */
 .menuToggle {
 	position: relative;
 	width: 40px;
 	height: 40px;
-	background: url('img/menu_icon.png') no-repeat center center; /* Create a 3-bar menu icon or use font icon */
+    /* IMPORTANT: You still need to add these icon images to your 'images' folder */
+	background: url('images/menu_icon.png') no-repeat center center;
     background-size: 30px;
 	cursor: pointer;
-	display: none; /* Hidden by default on large screens */
+	display: none;
 }
 .menuToggle.active {
-	background: url('img/close_icon.png') no-repeat center center; /* Create a close (X) icon */
+	background: url('images/close_icon.png') no-repeat center center;
     background-size: 25px;
 }
-header.sticky .menuToggle { /* Ensure menuToggle is visible on sticky header on mobile */
-    /* No specific style needed if it's already fine, but can adjust if needed */
-}
 
-
+/* --- Responsive Design --- */
 @media (max-width: 991px) {
 	:root {
         --section-padding: 60px 40px;
@@ -487,13 +475,11 @@ header.sticky .menuToggle { /* Ensure menuToggle is visible on sticky header on 
         font-size: 1.8em;
     }
 
-	header .navigation {
-		display: none; /* Hide desktop nav */
-	}
+	header .navigation { display: none; }
 	header .navigation.active {
-		display: flex; /* Show mobile nav when active */
+		display: flex;
 		position: fixed;
-		top: 74px; /* Adjust based on header height */
+		top: 74px; /* Adjust based on current header height */
 		left: 0;
 		width: 100%;
 		height: calc(100vh - 74px);
@@ -508,39 +494,24 @@ header.sticky .menuToggle { /* Ensure menuToggle is visible on sticky header on 
         margin-bottom: 20px;
 	}
 	header .navigation li a {
-		color: var(--text-color);
+		color: var(--text-color); /* Mobile menu links always dark on light background */
 		font-size: 1.6em;
         font-weight: 400;
 	}
-	.menuToggle {
-		display: block; /* Show hamburger icon */
-	}
+    header .navigation li a:hover {
+        color: var(--primary-color);
+    }
+	.menuToggle { display: block; }
 
-    .banner .content h2 {
-        font-size: 2.5em;
-    }
-    .banner .content p {
-        font-size: 1em;
-    }
+    .banner .content h2 { font-size: 2.5em; }
+    .banner .content p { font-size: 1em; }
 
-    .row {
-		flex-direction: column;
-	}
-	.row .col50 {
-		width: 100%;
-	}
-	.row .col50:last-child {
-        margin-top: 30px; /* Space between text and image on mobile */
-    }
-    .row .col50 .imgBx {
-        height: 300px; /* Adjust for mobile view */
-        margin-top: 20px;
-    }
+    .row { flex-direction: column; }
+	.row .col50 { width: 100%; }
+	.row .col50:last-child { margin-top: 30px; }
+    .row .col50 .imgBx { height: 300px; margin-top: 20px; }
 
-    .titleText {
-        font-size: 2em;
-        text-align: center;
-    }
+    .titleText { font-size: 2em; text-align: center; }
     .menu .title p, .expert .title p, .testimonials .title p, .contact .title p {
         text-align: center;
         padding: 0 10px;
@@ -548,50 +519,35 @@ header.sticky .menuToggle { /* Ensure menuToggle is visible on sticky header on 
 
     .menu .content .box,
     .expert .content .box {
-		width: 100%; /* Full width for menu items on mobile */
+		width: 100%;
 		margin: 15px 0;
 	}
-    .menu .content .box .imgBx, .expert .content .box .imgBx {
-        height: 250px;
-    }
-
-    .testimonials .content .box {
-        width: 100%;
-        margin: 15px 0;
-        padding: 30px;
-    }
-
-    .contactForm {
-        padding: 30px 20px;
-    }
-    .contactForm h3 {
-        font-size: 1.3em;
-    }
+    .menu .content .box .imgBx, .expert .content .box .imgBx { height: 250px; }
+    .testimonials .content .box { width: 100%; margin: 15px 0; padding: 30px; }
+    .contactForm { padding: 30px 20px; }
+    .contactForm h3 { font-size: 1.3em; }
 }
 
 @media (max-width: 480px) {
-    :root {
-        --section-padding: 50px 20px;
-    }
+    :root { --section-padding: 50px 20px; }
     header,
-	header.sticky {
-		padding: 10px 20px;
-	}
-    header .logo {
-        font-size: 1.6em;
-    }
+	header.sticky { padding: 10px 20px; }
+    header .logo { font-size: 1.6em; }
     header .navigation.active {
-		top: 58px; /* Adjust based on smaller header height */
+		top: 58px; /* Adjust based on potentially smaller header */
 		height: calc(100vh - 58px);
 	}
-    .banner .content h2 {
-        font-size: 2em;
+    .banner .content h2 { font-size: 2em; }
+    .btn { padding: 10px 25px; font-size: 0.9em; }
+    .titleText { font-size: 1.8em; }
+
+    /* Adjust header text color for transparent header on mobile if video is too light */
+    header:not(.sticky) .navigation li a {
+        /* color: var(--text-color); /* Or a darker color if video is light */
+        /* text-shadow: 1px 1px 2px rgba(0,0,0,0.2); */
     }
-    .btn {
-        padding: 10px 25px;
-        font-size: 0.9em;
-    }
-    .titleText {
-        font-size: 1.8em;
-    }
+     header:not(.sticky) .logo {
+        /* color: var(--text-color); */
+        /* text-shadow: 1px 1px 2px rgba(0,0,0,0.2); */
+     }
 }
